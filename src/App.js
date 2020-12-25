@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './homepage.compopnent'
+import './pages/homepage/homepage.compopnent'
 
 import './App.css';
-import HomePage from './homepage.compopnent';
+import HomePage from './pages/homepage/homepage.compopnent';
 
 function App() {
   return (
