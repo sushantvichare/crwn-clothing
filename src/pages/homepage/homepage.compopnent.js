@@ -4,7 +4,8 @@ import DirectoryMenu from '../../components/directory-menu/directoy-menu.compone
 import './homepagestyle.scss';
 
 
-function HomePage(){
+function HomePage(props){
+    console.log(props)
 
     return <div className='homepage'>
        <DirectoryMenu></DirectoryMenu>
