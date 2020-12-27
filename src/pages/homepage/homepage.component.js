@@ -1,17 +1,16 @@
-import React from 'react';
-import DirectoryMenu from '../../components/directory-menu/directoy-menu.component';
+import React from "react";
+import DirectoryMenu from "../../components/directory-menu/directoy-menu.component";
 
-import './homepagestyle.scss';
+import "./homepagestyle.scss";
 
+function HomePage(props) {
+  console.log(props);
 
-function HomePage(props){
-    console.log(props)
-
-    return <div className='homepage'>
-       <DirectoryMenu></DirectoryMenu>
+  return (
+    <div className="homepage">
+      <DirectoryMenu></DirectoryMenu>
     </div>
-
-
+  );
 }
 
-export default HomePage
+export default HomePage;
