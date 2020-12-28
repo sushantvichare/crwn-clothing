@@ -3,7 +3,7 @@ import React from "react";
 import "./form-input.styles.scss";
 
 function FormInput({ handleChange, label, ...otherProps }) {
-    console.log({ handleChange, label, ...otherProps })
+    
   return (
     <div className="group">
           {label ? (
@@ -14,7 +14,7 @@ function FormInput({ handleChange, label, ...otherProps }) {
         </label>
       ) : null}
 
-      <input className="form-input" onChange={handleChange} {...otherProps} />
+      <input className="form-input" onChange={handleChange} {...otherProps} autoComplete="on"/>
     
     </div>
   );
