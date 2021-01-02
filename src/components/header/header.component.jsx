@@ -10,8 +10,7 @@ import {connect} from "react-redux";
 
 import "./header.styles.scss";
 
-function Header({currentUser,hidden}) {
-  return (
+const Header=({currentUser,hidden})=>(
     <div className="header">
       <Link className="logo-container" to="/">
         <Logo className="logo" />
@@ -36,7 +35,7 @@ function Header({currentUser,hidden}) {
       {hidden?null:<CartDropdown/>}
     </div>
   );
-}
+
 
 const mapStateToProps = ({user:{currentUser},cart:{hidden}})=>({
   currentUser,
