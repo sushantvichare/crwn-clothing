@@ -7,7 +7,7 @@ import SignUp from '../../components/sign-up/sign-up.component';
 import './sign-inandsign-up.styles.scss';
 
 
-function signInandsignUp(){
+function SignInAndSignUp(){
     return(
         <div className='sign-in-and-sign-up'>
             <SignIn></SignIn>
@@ -17,4 +17,4 @@ function signInandsignUp(){
 
 }
 
-export default signInandsignUp;
+export default SignInAndSignUp;

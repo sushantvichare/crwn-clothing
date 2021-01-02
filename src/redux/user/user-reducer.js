@@ -1,8 +1,8 @@
-import { UserActionTypes} from './user-actions';
+import { UserActionTypes} from './user-types';
  
 const Initial_State={
     currentUser:null
-}
+};
 
 
 const userReducer=(state=Initial_State,action)=>{
@@ -21,4 +21,4 @@ const userReducer=(state=Initial_State,action)=>{
 
 };
 
-export default userReducer
+export default userReducer;
