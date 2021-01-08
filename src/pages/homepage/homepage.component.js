@@ -1,15 +1,17 @@
 import React from "react";
+
 import DirectoryMenu from "../../components/directory-menu/directoy-menu.component";
 
-import "./homepagestyle.scss";
+import {HomePageContainer} from './hompage.styles';
+
 
 function HomePage(props) {
   
 
   return (
-    <div className="homepage">
+    <HomePageContainer>
       <DirectoryMenu></DirectoryMenu>
-    </div>
+    </HomePageContainer>
   );
 }
 
