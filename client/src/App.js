@@ -1,54 +1,64 @@
-import React,{useEffect} from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import {createStructuredSelector} from 'reselect';
+import { createStructuredSelector } from "reselect";
 
-import "./App.css";
-import HomePage from "./pages/homepage/homepage.component";
-import Shop from "./pages/shop/shop.component";
+import { GlobalStyle } from "./global.styles";
+
 import Header from "./components/header/header.component";
-import SignInAndSignUp from "./pages/sign-in and sign-up page/sign-inandsign-uppage"; 
-import CheckoutPage from './pages/checkout/checkout.component';
+import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 
+import { connect } from "react-redux";
 
-import {connect} from 'react-redux';
+import { selectCurrentUser } from "./redux/user/user-selectors";
 
-import {selectCurrentUser} from './redux/user/user-selectors';
+import { checkUserSession } from "./redux/user/user-actions";
 
-import {checkUserSession} from './redux/user/user-actions';
+import Spinner from "./components/spinner";
 
+const App = ({ checkUserSession, currentUser }) => {
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
 
-const App=({checkUserSession,currentUser})=>{
-  
-  useEffect(()=>{
-    checkUserSession()
-  },[checkUserSession])
+  const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
+  const Shop = lazy(() => import("./pages/shop/shop.component"));
+  const SignInAndSignUp = lazy(() =>
+    import("./pages/sign-in and sign-up page/sign-inandsign-uppage")
+  );
+  const CheckoutPage = lazy(() =>
+    import("./pages/checkout/checkout.component")
+  );
 
+  return (
+    <div>
+      <GlobalStyle />
+      <Header />
+      <Switch>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path="/" component={HomePage}></Route>
+            <Route path="/shop" component={Shop}></Route>
+            <Route
+              exact
+              path="/signin"
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
+              }
+            ></Route>
+            <Route exact path="/checkout" component={CheckoutPage}></Route>
+          </Suspense>
+        </ErrorBoundary>
+      </Switch>
+    </div>
+  );
+};
 
-
-  
-    return (
-      <div>
-        <Header/>
-        <Switch>
-          <Route exact path="/" component={HomePage}></Route>
-          <Route path="/shop" component={Shop}></Route>
-          <Route exact path="/signin" render={()=>currentUser? (<Redirect to='/' />) :(<SignInAndSignUp/>)}></Route>
-          <Route exact path="/checkout" component={CheckoutPage}></Route>
-        </Switch>
-      </div>
-    );
-  
-
-
-  }
-
-const mapStateToProps=createStructuredSelector({
-  currentUser:selectCurrentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps=dispatch=>({
-  checkUserSession:()=>dispatch(checkUserSession())  
-})
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
