@@ -1,7 +1,7 @@
 # crwn-clothing
 Ecommerce Webapp
-![crwn](https://ibb.co/YT1qTTD)
-![crwn](https://ibb.co/tqGtHbQ)
-![crwn](https://ibb.co/b5TfWXZ)
-![crwn](https://ibb.co/NttHpZ9)
-![crwn](https://ibb.co/RDF4ZdQ)
+![crwn](https://i.ibb.co/gR2FHht/Capture.png)
+![crwn](https://i.ibb.co/3YjLYYf/Capture1.png)
+![crwn](https://i.ibb.co/HtSsKrB/Capture2.png)
+![crwn](https://i.ibb.co/60zdnFx/Capture3.png)
+![crwn](https://i.ibb.co/4KK5MP8/Capture4.png)
